@@ -60,7 +60,7 @@ export const content = {
   ],
 
   hero: {
-    title: "Você cuida dos pacientes. A Seiva cuida das glosas.",
+    title: "Você cuida dos pacientes.\nA Seiva cuida das glosas.",
     subtitle: "IA e auditores recuperam o dinheiro que os planos de saúde recusaram. Você só paga pelo resultado.",
     video: "/media/hero.mp4",
     videoMobile: "", // [TROCAR] versão leve para celular (mp4 menor, ex.: 720 px de largura)

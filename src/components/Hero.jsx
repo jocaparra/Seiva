@@ -12,7 +12,7 @@ export default function Hero({ content }) {
         <div className="absolute inset-0 bg-black/70" />
       </div>
       <div className="container-s pb-14 pt-32 md:pb-24">
-        <Reveal as="h1" className="max-w-[22ch] font-serif font-medium leading-[1.02] tracking-[-0.025em] text-white" style={{ fontSize: "clamp(2.75rem, 8vw, 5.25rem)" }}>
+        <Reveal as="h1" className="max-w-[22ch] whitespace-pre-line font-serif font-medium leading-[1.02] tracking-[-0.025em] text-white" style={{ fontSize: "clamp(2.75rem, 8vw, 5.25rem)" }}>
           {h.title}
         </Reveal>
         <Reveal as="p" delay={100} className="mt-6 max-w-[34rem] text-[18px] text-white md:text-[20px]">{h.subtitle}</Reveal>
