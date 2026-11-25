@@ -62,9 +62,9 @@ export const content = {
   hero: {
     title: "Você cuida dos pacientes. A Seiva cuida das glosas.",
     subtitle: "IA e auditores recuperam o dinheiro que os planos de saúde recusaram. Você só paga pelo resultado.",
-    video: "/media/hero.mp4", // [TROCAR] versão final licenciada (sem marca dágua)
+    video: "/media/hero.mp4",
     videoMobile: "", // [TROCAR] versão leve para celular (mp4 menor, ex.: 720 px de largura)
-    poster: "", // [TROCAR] imagem de capa que aparece enquanto o vídeo carrega
+    poster: "/media/hero-poster.jpg",
     posterAlt: "",
   },
 
