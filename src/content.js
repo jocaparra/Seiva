@@ -70,12 +70,12 @@ export const content = {
 
   logos: {
     title: "Quem apoia a Seiva",
-    // Cada item vira um logo, todos na mesma caixa de tamanho. Para adicionar, coloque o arquivo em public/logos.
+    // Aparecem no hero, abaixo do botão. Use PNG branco com fundo transparente em public/logos.
+    // "size" é a altura de cada logo, ajustada para que tenham o mesmo peso visual.
     items: [
-      { name: "Perplexity", src: "/logos/perplexity.png" },
-      { name: "NVIDIA Inception Program", src: "/logos/nvidia-inception.png" },
-      { name: "Baseten", src: "/logos/baseten.png" },
-      { name: "OpenAI", src: "/logos/openai.png" },
+      { name: "NVIDIA", src: "/logos/nvidia.png", size: "h-[18px] md:h-[26px]" },
+      { name: "Baseten", src: "/logos/baseten.png", size: "h-5 md:h-7" },
+      { name: "OpenAI", src: "/logos/openai.png", size: "h-[22px] md:h-8" },
       // [TROCAR] logos de clínicas e hospitais clientes, quando houver autorização para usar
     ],
   },

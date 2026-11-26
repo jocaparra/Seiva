@@ -3,7 +3,6 @@ import { content } from "./content.js";
 import { ModalContext } from "./components/shared.jsx";
 import { Nav } from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
-import Logos from "./components/Logos.jsx";
 import Value from "./components/Value.jsx";
 // import Team from "./components/Team.jsx"; // seção "Especialistas de verdade" guardada para uso futuro
 import Demo from "./components/Demo.jsx";
@@ -25,7 +24,6 @@ export default function App() {
       <Nav content={content} />
       <main>
         <Hero content={content} />
-        <Logos content={content} />
         <Value content={content} />
         {/* <Team content={content} /> */}
         <Demo content={content} />
