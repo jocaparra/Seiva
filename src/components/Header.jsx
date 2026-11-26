@@ -43,7 +43,7 @@ export function Nav({ content }) {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <div className="hidden lg:block"><CtaButton className={solid ? "btn-primary" : "btn-light"} content={content} /></div>
+          <div className="hidden lg:block"><CtaButton className={`${solid ? "btn-primary" : "btn-light"} px-4 py-2 font-normal`} content={content} /></div>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border border-current/50 lg:hidden"
