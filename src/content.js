@@ -15,10 +15,10 @@ export const content = {
 
   cta: "Falar com a nossa equipe",
 
-  // Para ligar o formulário: cole aqui o endereço do seu serviço (Formspree, Getform, Make, Zapier etc.).
-  // Enquanto estiver vazio, o envio é apenas simulado e os dados aparecem no console do navegador.
+  // Para ligar o formulário: cole aqui o endereço do app da Web do Google (script em google-apps-script/formulario.gs).
+  // Se ficar vazio, o envio é apenas simulado e os dados aparecem no console do navegador.
   form: {
-    endpoint: "", // [TROCAR] ex.: "https://formspree.io/f/xxxxxxx"
+    endpoint: "https://script.google.com/macros/s/AKfycbzMrikKokNNLf3sTcElrvYkjgfAtI0cq5cWnQoG8_O3iaVqZADZZSQg5VQJ-sxMS99Thw/exec",
     title: "Fale com a nossa equipe",
     intro: "Conte um pouco sobre a sua operação. Respondemos em até um dia útil.",
     fields: {

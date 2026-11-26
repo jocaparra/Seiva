@@ -29,8 +29,10 @@ export default function Modal({ content, onClose }) {
     setStatus("sending");
     try {
       if (f.endpoint) {
-        const r = await fetch(f.endpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
-        if (!r.ok) throw new Error("falha");
+        // URLSearchParams evita a checagem prévia de CORS, que o Google Apps Script não responde
+        const r = await fetch(f.endpoint, { method: "POST", body: new URLSearchParams(data) });
+        // o Apps Script responde 200 mesmo quando falha: o resultado vem no campo "ok"
+        if (!r.ok || !(await r.json()).ok) throw new Error("falha");
       } else {
         console.info("[Seiva] Formulário (simulado, configure form.endpoint em content.js):", data);
         await new Promise((r) => setTimeout(r, 500));
