@@ -9,7 +9,7 @@ export default function Security({ content }) {
         <div className="mt-12 grid gap-6 lg:grid-cols-3 md:mt-16">
           {s.items.map((it, i) => (
             <Reveal key={it.title} delay={i * 90} className="rounded-3xl bg-bg p-7 md:p-9">
-              <h3 className="font-serif text-[26px] font-medium leading-tight text-ink">{it.title}</h3>
+              <h3 className="font-display text-[26px] font-medium leading-tight text-ink">{it.title}</h3>
               <p className="mt-3 text-ink">{it.text}</p>
             </Reveal>
           ))}

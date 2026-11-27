@@ -85,7 +85,13 @@ export const content = {
   value: {
     id: "solucao",
     title: "Uma equipe de glosas que trabalha por você, e não um software para você operar.",
-    link: "Saiba mais",
+    // Vídeo de demonstração. Para trocar, substitua os arquivos em public/media.
+    video: {
+      src: "/media/seiva-demo.mp4",
+      poster: "/media/seiva-demo-poster.jpg",
+      assistir: "Veja como funciona",
+      descricao: "Vídeo: como a Seiva recupera glosas",
+    },
   },
 
   // SEÇÃO GUARDADA: não aparece no site. Para reativar, descomente <Team /> em src/App.jsx.

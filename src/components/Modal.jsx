@@ -54,13 +54,13 @@ export default function Modal({ content, onClose }) {
         {status === "done" ? (
           <div className="py-8 text-center" role="status">
             <img src={content.site.logo} alt="" className="mx-auto h-14 w-14" />
-            <h2 id="modal-t" className="mt-5 font-serif text-[34px] font-medium leading-tight text-ink">{f.successTitle}</h2>
+            <h2 id="modal-t" className="mt-5 font-display text-[34px] font-medium leading-tight text-ink">{f.successTitle}</h2>
             <p className="mx-auto mt-3 max-w-[26rem] text-ink">{f.successText}</p>
             <button type="button" onClick={onClose} className="btn-primary mt-8">{f.close}</button>
           </div>
         ) : (
           <form onSubmit={submit} noValidate={false}>
-            <h2 id="modal-t" className="pr-10 font-serif text-[32px] font-medium leading-tight text-ink">{f.title}</h2>
+            <h2 id="modal-t" className="pr-10 font-display text-[32px] font-medium leading-tight text-ink">{f.title}</h2>
             <p className="mt-2 text-[16px] text-ink">{f.intro}</p>
             <div className="mt-6 space-y-4">
               <label className="block text-[15px] font-medium text-ink">{L.name}<input name="nome" required autoComplete="name" className={input} /></label>

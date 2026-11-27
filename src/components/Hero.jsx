@@ -14,7 +14,7 @@ export default function Hero({ content }) {
       </div>
       {/* um único Reveal: texto, botão e logos entram juntos ao abrir a página */}
       <Reveal className={`container-s pt-32 ${content.logos.visivel ? "pb-8 md:pb-10" : "pb-20 md:pb-24"}`}>
-        <h1 className="max-w-[22ch] whitespace-pre-line font-serif font-medium leading-[1.02] tracking-[-0.025em] text-white" style={{ fontSize: "clamp(2.75rem, 8vw, 5.25rem)" }}>
+        <h1 className="max-w-[22ch] whitespace-pre-line font-display font-medium leading-[1.02] tracking-[-0.025em] text-white" style={{ fontSize: "clamp(2.75rem, 8vw, 5.25rem)" }}>
           {h.title}
         </h1>
         <p className="mt-6 max-w-[34rem] text-[18px] text-white md:text-[20px]">{h.subtitle}</p>

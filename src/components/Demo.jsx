@@ -59,7 +59,7 @@ function ExpertDemo({ d }) {
   return (
     <div ref={ref} className="relative rounded-2xl bg-white p-5 md:p-7" role="img" aria-label={`${d.title}: ${d.text}`}>
       <div aria-hidden="true">
-        <p className="font-serif text-[22px] font-medium text-ink">{d.docTitle}</p>
+        <p className="font-display text-[22px] font-medium text-ink">{d.docTitle}</p>
         <ul className="mt-4 space-y-3 text-[16px] text-ink">
           {d.docLines.map((l, i) => (
             <li key={l} className="fade-step rounded-lg bg-bg px-3 py-2.5" style={on(i + 1)}>{l}</li>
@@ -102,7 +102,7 @@ export default function Demo({ content }) {
         <div className="mt-12 grid gap-6 lg:grid-cols-2 md:mt-16">
           {blocks.map(({ data, node }, i) => (
             <Reveal key={data.title} delay={i * 100} className="rounded-3xl bg-soft p-6 md:p-10">
-              <h3 className="font-serif text-[30px] font-medium leading-tight text-ink md:text-[36px]">{data.title}</h3>
+              <h3 className="font-display text-[30px] font-medium leading-tight text-ink md:text-[36px]">{data.title}</h3>
               <p className="mt-3 max-w-[30rem] text-ink">{data.text}</p>
               <div className="mt-8">
                 {data.video ? <Video src={data.video} background className="aspect-[4/3] w-full rounded-2xl" /> : node}

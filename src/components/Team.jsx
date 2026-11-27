@@ -10,7 +10,7 @@ export default function Team({ content }) {
           {t.people.map((p, i) => (
             <Reveal as="li" key={p.role} delay={i * 80}>
               <Img src={p.photo} alt={p.alt} label="[TROCAR] retrato" loading="lazy" className="aspect-[4/5] w-full rounded-2xl" />
-              <h3 className="mt-5 font-serif text-[24px] font-medium leading-tight text-ink">{p.role}</h3>
+              <h3 className="mt-5 font-display text-[24px] font-medium leading-tight text-ink">{p.role}</h3>
               <p className="mt-2 text-[17px] text-ink">{p.text}</p>
             </Reveal>
           ))}

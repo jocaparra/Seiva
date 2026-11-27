@@ -9,7 +9,7 @@ export default function Footer({ content }) {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <a href="#top" className="flex items-center gap-3 self-start" aria-label={`${content.site.name}, início`}>
             <img src={content.site.logo} alt={content.site.logoAlt} loading="lazy" className="h-12 w-12" />
-            <span className="font-serif text-[34px] font-semibold tracking-tight text-ink">{content.site.name}</span>
+            <span className="font-display text-[34px] font-semibold tracking-tight text-ink">{content.site.name}</span>
           </a>
           <nav aria-label="Rodapé" className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {f.groups.map((g) => (

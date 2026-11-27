@@ -15,7 +15,7 @@ export default {
         deep: "#0F2A2E",
       },
       fontFamily: {
-        serif: ['"Source Serif 4"', "Georgia", "serif"],
+        display: ["Inter", "system-ui", "sans-serif"], // títulos
         sans: ["Inter", "system-ui", "sans-serif"],
       },
     },

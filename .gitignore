@@ -3,3 +3,5 @@ dist
 .DS_Store
 .taste-skill
 *.mp4
+!public/media/*.mp4
+seiva videos/

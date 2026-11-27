@@ -38,7 +38,7 @@ export default function Journey({ content }) {
                       aria-controls="journey-panel"
                       tabIndex={active ? 0 : -1}
                       onClick={() => go(k)}
-                      className={`w-full text-left font-serif text-[26px] font-medium leading-tight md:text-[32px] ${active ? "text-ink" : "text-mute hover:text-ink"}`}
+                      className={`w-full text-left font-display text-[26px] font-medium leading-tight md:text-[32px] ${active ? "text-ink" : "text-mute hover:text-ink"}`}
                     >
                       {st.title}
                     </button>

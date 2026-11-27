@@ -11,8 +11,8 @@ body { background: #F6F4EE; color: #1B2A33; font-family: Inter, system-ui, sans-
 
 @layer components {
   .container-s { @apply mx-auto w-full max-w-[1280px] px-5 md:px-8; }
-  .h-display { @apply font-serif font-medium tracking-[-0.02em] leading-[1.05] text-ink; font-size: clamp(2.5rem, 7vw, 5.25rem); }
-  .h-section { @apply font-serif font-medium tracking-[-0.02em] leading-[1.08] text-ink; font-size: clamp(2rem, 4.6vw, 3.5rem); }
+  .h-display { @apply font-display font-medium tracking-[-0.02em] leading-[1.05] text-ink; font-size: clamp(2.5rem, 7vw, 5.25rem); }
+  .h-section { @apply font-display font-medium tracking-[-0.02em] leading-[1.08] text-ink; font-size: clamp(2rem, 4.6vw, 3.5rem); }
   .btn { @apply inline-flex items-center justify-center rounded-full px-6 py-3.5 text-[16px] font-medium transition duration-200 active:scale-[0.98]; }
   .btn-primary { @apply btn bg-action text-white hover:bg-actionDark; }
   .btn-outline { @apply btn border border-ink/40 text-ink hover:bg-ink hover:text-white; }
