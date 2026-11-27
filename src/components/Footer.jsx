@@ -29,8 +29,9 @@ export default function Footer({ content }) {
         <div className="mt-16 flex flex-col gap-4 bg-soft/0 text-[15px] text-mute md:flex-row md:items-center md:justify-between">
           <p>© {content.site.year} {content.site.name}. {f.rights}</p>
           <p className="flex gap-6">
-            <a href={f.terms.href} className="hover:text-action hover:underline">{f.terms.label}</a>
-            <a href={f.privacy.href} className="hover:text-action hover:underline">{f.privacy.label}</a>
+            {[f.terms, f.privacy].filter((l) => l.visivel).map((l) => (
+              <a key={l.label} href={l.href} className="hover:text-action hover:underline">{l.label}</a>
+            ))}
           </p>
         </div>
       </div>

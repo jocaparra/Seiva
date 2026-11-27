@@ -240,7 +240,8 @@ export const content = {
       // Quando houver o email da Seiva, adicione em "links": { label: "email", href: "mailto:email" }
     ],
     rights: "Todos os direitos reservados.",
-    terms: { label: "Termos de Uso", href: "#" }, // [TROCAR] link
-    privacy: { label: "Política de Privacidade", href: "#" }, // [TROCAR] link
+    // LINKS GUARDADOS: quando cada texto estiver publicado, coloque o link em "href" e mude "visivel" para true.
+    terms: { visivel: false, label: "Termos de Uso", href: "#" },
+    privacy: { visivel: false, label: "Política de Privacidade", href: "#" },
   },
 };
