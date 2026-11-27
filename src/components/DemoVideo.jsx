@@ -1,28 +1,64 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-/** Vídeo que só carrega e toca, com som, quando a pessoa clica. */
+const menosMovimento = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/**
+ * Vídeo sem botões: enquanto está na tela, roda mudo e em repetição.
+ * Um clique recomeça do início com som; outro clique tira o som.
+ */
 export default function DemoVideo({ video }) {
   const ref = useRef(null);
-  const [iniciado, setIniciado] = useState(false);
-  const tocar = () => {
-    setIniciado(true);
-    ref.current.play().catch(() => {});
-    ref.current.focus();
+  const [comSom, setComSom] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const observador = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          // quem pede menos movimento no aparelho vê a capa até clicar
+          if (!menosMovimento()) el.play().catch(() => {});
+        } else {
+          // saiu da tela: para e volta a ficar mudo
+          el.pause();
+          el.muted = true;
+          setComSom(false);
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observador.observe(el);
+    return () => observador.disconnect();
+  }, []);
+
+  const silenciar = () => {
+    const el = ref.current;
+    el.muted = true;
+    setComSom(false);
+    if (menosMovimento()) el.pause();
+    else el.play().catch(() => {});
   };
+
+  const alternar = () => {
+    if (comSom) return silenciar();
+    const el = ref.current;
+    el.muted = false;
+    el.currentTime = 0;
+    setComSom(true);
+    el.play().catch(() => {});
+  };
+
+  // ao terminar com som, volta a rodar mudo desde o começo
+  const aoTerminar = () => {
+    ref.current.currentTime = 0;
+    silenciar();
+  };
+
   return (
-    <div className="relative aspect-video overflow-hidden rounded-3xl border border-line bg-bg shadow-[0_24px_60px_rgba(27,42,51,0.10)]">
-      <video ref={ref} className="h-full w-full" src={video.src} poster={video.poster} preload="none" playsInline controls={iniciado} onPlay={() => setIniciado(true)} aria-label={video.descricao} />
-      {!iniciado && (
-        <button type="button" onClick={tocar} aria-label={video.assistir} className="group absolute inset-0 flex items-end justify-start p-3 md:p-6">
-          {/* no canto, para não cobrir os documentos; no celular, só o ícone */}
-          <span className="inline-flex items-center gap-3 rounded-full bg-action p-1.5 text-[16px] font-medium text-white shadow-lg transition group-hover:bg-actionDark md:py-2.5 md:pl-2.5 md:pr-5">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-action">
-              <svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M1 1.5v13l12-6.5z" fill="currentColor" /></svg>
-            </span>
-            <span className="hidden md:inline">{video.assistir}</span>
-          </span>
-        </button>
-      )}
+    <div className="relative aspect-video overflow-hidden rounded-2xl bg-bg shadow-[0_24px_60px_rgba(15,42,46,0.28)] md:rounded-3xl">
+      <video ref={ref} className="h-full w-full" src={video.src} poster={video.poster} preload="none" playsInline muted={!comSom} loop={!comSom} onEnded={aoTerminar} aria-label={video.descricao} />
+      {/* área de clique invisível sobre o vídeo inteiro; o contorno só aparece para quem navega pelo teclado */}
+      <button type="button" onClick={alternar} aria-label={comSom ? video.desligarSom : video.ligarSom} className="absolute inset-0 cursor-pointer rounded-[inherit] focus-visible:outline focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-action" />
     </div>
   );
 }

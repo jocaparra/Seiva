@@ -89,7 +89,9 @@ export const content = {
     video: {
       src: "/media/seiva-demo.mp4",
       poster: "/media/seiva-demo-poster.jpg",
-      assistir: "Veja como funciona",
+      // lidos por leitores de tela na área de clique do vídeo
+      ligarSom: "Assistir ao vídeo com som",
+      desligarSom: "Desligar o som do vídeo",
       descricao: "Vídeo: como a Seiva recupera glosas",
     },
   },
