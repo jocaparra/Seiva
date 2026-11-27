@@ -14,9 +14,7 @@ export default function Security({ content }) {
             </Reveal>
           ))}
         </div>
-        <p className="mt-8 max-w-[44rem] text-ink">
-          {s.lgpd} <span className="text-mute">{s.legalNote}</span>
-        </p>
+        <p className="mt-8 max-w-[44rem] text-ink">{s.lgpd}</p>
       </div>
     </section>
   );

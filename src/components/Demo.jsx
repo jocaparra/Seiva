@@ -110,7 +110,6 @@ export default function Demo({ content }) {
             </Reveal>
           ))}
         </div>
-        <p className="mt-5 text-[14px] text-mute">{d.note}</p>
       </div>
     </section>
   );

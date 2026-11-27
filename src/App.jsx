@@ -29,7 +29,7 @@ export default function App() {
         <Demo content={content} />
         <Journey content={content} />
         <Security content={content} />
-        <Testimonials content={content} />
+        {content.testimonials.visivel ? <Testimonials content={content} /> : null}
         <FinalBanner content={content} />
       </main>
       <Footer content={content} />

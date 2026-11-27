@@ -122,7 +122,6 @@ export const content = {
 
   demo: {
     title: "A máquina lê. As pessoas decidem.",
-    note: "Exemplo ilustrativo, com dados fictícios. [TROCAR] por vídeos reais do produto, se preferir.",
     ai: {
       title: "A IA analisa",
       text: "Cada glosa é lida, e a lista chega organizada por valor, chance de reversão e prazo.",
@@ -210,10 +209,11 @@ export const content = {
       },
     ],
     lgpd: "Tratamos os dados em linha com a Lei Geral de Proteção de Dados (LGPD).",
-    legalNote: "[TROCAR] revisar com advogado antes de publicar",
   },
 
+  // SEÇÃO GUARDADA: para mostrar os depoimentos, preencha os itens abaixo e mude "visivel" para true.
   testimonials: {
+    visivel: false,
     title: "Por que clientes confiam na Seiva",
     prev: "Depoimento anterior",
     next: "Próximo depoimento",
@@ -236,7 +236,8 @@ export const content = {
       { title: "Solução", links: [{ label: "Uma equipe de glosas", href: "#solucao" }, { label: "Especialistas", href: "#para-quem" }] },
       { title: "Como funciona", links: [{ label: "Do diagnóstico ao resultado", href: "#como-funciona" }] },
       { title: "Segurança", links: [{ label: "Como tratamos seus dados", href: "#seguranca" }] },
-      { title: "Contato", links: [{ label: "Falar com a nossa equipe", href: "#contato", modal: true }, { label: "[TROCAR] email de contato", href: "mailto:" }] },
+      { title: "Contato", links: [{ label: "Falar com a nossa equipe", href: "#contato", modal: true }] },
+      // Quando houver o email da Seiva, adicione em "links": { label: "email", href: "mailto:email" }
     ],
     rights: "Todos os direitos reservados.",
     terms: { label: "Termos de Uso", href: "#" }, // [TROCAR] link
