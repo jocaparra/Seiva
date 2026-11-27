@@ -68,7 +68,9 @@ export const content = {
     posterAlt: "",
   },
 
+  // BLOCO GUARDADO: para os apoiadores voltarem ao hero, abaixo do botão, mude "visivel" para true.
   logos: {
+    visivel: false,
     title: "Quem apoia a Seiva",
     // Aparecem no hero, abaixo do botão. Use PNG branco com fundo transparente em public/logos.
     // "size" é a altura de cada logo, ajustada para que tenham o mesmo peso visual.
