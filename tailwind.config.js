@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        // computador com pouca altura (notebooks): usado para as seções caberem em uma tela
+        baixa: { raw: "(min-width: 1024px) and (max-height: 880px)" },
+      },
       colors: {
         bg: "#F6F4EE",
         ink: "#1B2A33",
@@ -17,6 +21,15 @@ export default {
       fontFamily: {
         display: ["Inter", "system-ui", "sans-serif"], // títulos
         sans: ["Inter", "system-ui", "sans-serif"],
+      },
+      keyframes: {
+        halo: {
+          "0%": { transform: "scale(1)", opacity: "0.5" },
+          "80%, 100%": { transform: "scale(1.5)", opacity: "0" },
+        },
+      },
+      animation: {
+        halo: "halo 1.2s ease-out infinite",
       },
     },
   },

@@ -9,6 +9,7 @@ export const content = {
   site: {
     name: "Seiva",
     logo: "/logo.svg", // [TROCAR] por /logo.png quando enviar a logo oficial (coloque o arquivo na pasta public)
+    logoClaro: "/logo-claro.svg", // mesma logo na cor do fundo, usada sobre o azul do final da página
     logoAlt: "Logo da Seiva, uma árvore azul em três camadas",
     year: 2026,
   },

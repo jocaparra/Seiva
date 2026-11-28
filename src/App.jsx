@@ -30,9 +30,12 @@ export default function App() {
         <Journey content={content} />
         <Security content={content} />
         {content.testimonials.visivel ? <Testimonials content={content} /> : null}
-        <FinalBanner content={content} />
       </main>
-      <Footer content={content} />
+      {/* chamada final e rodapé formam uma única tela azul */}
+      <div id="passagem-final" className="passagem-final flex flex-col lg:min-h-[100svh]">
+        <FinalBanner content={content} />
+        <Footer content={content} />
+      </div>
       {open && <Modal content={content} onClose={closeFn} />}
     </ModalContext.Provider>
   );

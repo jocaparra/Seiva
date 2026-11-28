@@ -3,12 +3,12 @@ import { Reveal } from "./shared.jsx";
 export default function Security({ content }) {
   const s = content.security;
   return (
-    <section id={s.id} className="bg-soft py-20 md:py-32">
+    <section id={s.id} className="secao">
       <div className="container-s">
         <Reveal as="h2" className="h-section max-w-[26ch]">{s.title}</Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3 md:mt-16">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3 lg:mt-[5svh]">
           {s.items.map((it, i) => (
-            <Reveal key={it.title} delay={i * 90} className="rounded-3xl bg-bg p-7 md:p-9">
+            <Reveal key={it.title} delay={i * 90} className="rounded-3xl bg-soft p-7 md:p-9">
               <h3 className="font-display text-[26px] font-medium leading-tight text-ink">{it.title}</h3>
               <p className="mt-3 text-ink">{it.text}</p>
             </Reveal>

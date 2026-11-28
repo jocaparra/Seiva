@@ -13,16 +13,43 @@ export function Announcement({ content }) {
   );
 }
 
+// Aparência do menu conforme o que está atrás dele
+const ESTILOS = {
+  topo: "bg-transparent text-white on-dark", // sobre o vídeo do topo
+  claro: "bg-bg text-ink",
+  fadeClaro: "bg-transparent text-ink", // parte clara do degradê final
+  fadeMeio: "bg-transparent text-ink", // azul claro do degradê: a logo escurece para não sumir
+  fadeAzul: "bg-transparent text-white on-dark", // parte azul do degradê
+  azul: "bg-action text-white on-dark", // depois do degradê, para o texto da página não passar por trás
+};
+
+function fundoDoMenu() {
+  if (window.scrollY <= 40) return "topo";
+  const passagem = document.getElementById("passagem-final");
+  const topo = passagem ? passagem.getBoundingClientRect().top : Infinity;
+  if (topo > 48) return "claro";
+  const altura = 36 - topo; // ponto do degradê que está atrás do meio do menu
+  if (altura < 70) return "fadeClaro";
+  if (altura < 175) return "fadeMeio";
+  return topo >= -168 ? "fadeAzul" : "azul"; // a 168px o menu (72px) alcança o título, que começa em 240px
+}
+
 export function Nav({ content }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [fundo, setFundo] = useState("topo");
   useEffect(() => {
-    const f = () => setScrolled(window.scrollY > 40);
+    const f = () => setFundo(fundoDoMenu());
     f();
     window.addEventListener("scroll", f, { passive: true });
-    return () => window.removeEventListener("scroll", f);
+    window.addEventListener("resize", f);
+    return () => {
+      window.removeEventListener("scroll", f);
+      window.removeEventListener("resize", f);
+    };
   }, []);
-  const solid = scrolled || open;
+  const estilo = ESTILOS[open ? "claro" : fundo];
+  // sobre o azul a logo azul sumiria: usa a versão na cor do fundo
+  const sobreAzul = !open && (fundo === "fadeAzul" || fundo === "azul");
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     const onKey = (e) => e.key === "Escape" && setOpen(false);
@@ -31,11 +58,11 @@ export function Nav({ content }) {
   }, [open]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${solid ? "bg-bg text-ink" : "bg-transparent text-white on-dark"}`}>
+    <header className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${estilo}`}>
       <div className="container-s flex h-[72px] items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5" aria-label={`${content.site.name}, início`}>
-          <img src={content.site.logo} alt={content.site.logoAlt} className="h-9 w-9" />
-          <span className="font-display text-[26px] font-semibold tracking-tight">{content.site.name}</span>
+          <img src={sobreAzul ? content.site.logoClaro : content.site.logo} alt={content.site.logoAlt} className={`h-9 w-9 ${!open && fundo === "fadeMeio" ? "brightness-50" : ""}`} />
+          <span className={`font-display text-[26px] font-semibold tracking-tight ${sobreAzul ? "text-bg" : ""}`}>{content.site.name}</span>
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
           {content.nav.map((l) => (
@@ -43,7 +70,7 @@ export function Nav({ content }) {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <div className="hidden lg:block"><CtaButton className={`${solid ? "btn-primary" : "btn-light"} px-4 py-2 font-normal`} content={content} /></div>
+          <div className="hidden lg:block"><CtaButton className={`${estilo.includes("text-ink") ? "btn-primary" : "btn-light"} px-4 py-2 font-normal`} content={content} /></div>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-full border border-current/50 lg:hidden"

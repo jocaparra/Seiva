@@ -12,7 +12,7 @@ export default function Testimonials({ content }) {
     if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
   };
   return (
-    <section className="py-20 md:py-32" aria-labelledby="dep-t">
+    <section className="secao" aria-labelledby="dep-t">
       <div className="container-s" onKeyDown={onKey}>
         <Reveal as="h2" id="dep-t" className="h-section max-w-[28ch]">{t.title}</Reveal>
         <div className="mt-12 md:mt-16" role="group" aria-roledescription="carrossel" aria-label={t.title}>

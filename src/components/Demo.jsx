@@ -13,7 +13,6 @@ function useLoop(active, period, total, reduced) {
   return t;
 }
 
-const ROW_H = 56;
 const chanceStyle = { Alta: "bg-action text-white", Média: "bg-soft text-ink", Baixa: "bg-line text-ink" };
 
 function AiDemo({ d }) {
@@ -23,19 +22,19 @@ function AiDemo({ d }) {
   const shown = Math.min(t, d.rows.length);
   const sorted = t >= 8 || reduced;
   return (
-    <div ref={ref} className="rounded-2xl bg-white p-4 md:p-6" role="img" aria-label={`${d.title}: ${d.text}`}>
+    <div ref={ref} className="rounded-2xl bg-white p-4 [--linha:56px] md:p-6 baixa:p-4 baixa:[--linha:46px]" role="img" aria-label={`${d.title}: ${d.text}`}>
       <div className="grid grid-cols-[1.1fr_1fr_.9fr_1fr] gap-2 px-3 pb-3 text-[14px] font-medium text-mute">
         <span>{d.headers.item}</span><span>{d.headers.value}</span><span>{d.headers.chance}</span><span>{d.headers.deadline}</span>
       </div>
-      <div className="relative" style={{ height: ROW_H * d.rows.length }} aria-hidden="true">
+      <div className="relative" style={{ height: `calc(var(--linha) * ${d.rows.length})` }} aria-hidden="true">
         {d.rows.map((r, i) => {
-          const y = (sorted ? r.rank : i) * ROW_H;
+          const y = sorted ? r.rank : i; // posição na lista
           const visible = reduced || i < shown;
           return (
             <div
               key={r.item}
               className="glosa-row absolute inset-x-0 grid grid-cols-[1.1fr_1fr_.9fr_1fr] items-center gap-2 rounded-xl bg-bg px-3 text-[13px] whitespace-nowrap text-ink md:text-[15px]"
-                           style={{ height: ROW_H - 8, transform: `translateY(${y}px)`, opacity: visible ? 1 : 0 }}
+                           style={{ height: "calc(var(--linha) - 8px)", transform: `translateY(calc(var(--linha) * ${y}))`, opacity: visible ? 1 : 0 }}
             >
               <span className="font-medium">{r.item}</span>
               <span>{r.value}</span>
@@ -57,15 +56,15 @@ function ExpertDemo({ d }) {
   const all = reduced;
   const on = (n) => (all || t >= n ? { opacity: 1, transform: "none" } : { opacity: 0, transform: "translateY(8px)" });
   return (
-    <div ref={ref} className="relative rounded-2xl bg-white p-5 md:p-7" role="img" aria-label={`${d.title}: ${d.text}`}>
+    <div ref={ref} className="relative rounded-2xl bg-white p-5 md:p-7 baixa:p-4" role="img" aria-label={`${d.title}: ${d.text}`}>
       <div aria-hidden="true">
         <p className="font-display text-[22px] font-medium text-ink">{d.docTitle}</p>
-        <ul className="mt-4 space-y-3 text-[16px] text-ink">
+        <ul className="mt-4 space-y-3 text-[16px] text-ink baixa:mt-2 baixa:space-y-2">
           {d.docLines.map((l, i) => (
-            <li key={l} className="fade-step rounded-lg bg-bg px-3 py-2.5" style={on(i + 1)}>{l}</li>
+            <li key={l} className="fade-step rounded-lg bg-bg px-3 py-2.5 baixa:py-1.5" style={on(i + 1)}>{l}</li>
           ))}
         </ul>
-        <ul className="mt-5 space-y-2 text-[15px] text-ink">
+        <ul className="mt-5 space-y-2 text-[15px] text-ink baixa:mt-3 baixa:space-y-1">
           {d.checks.map((c, i) => {
             const ok = all || t >= i + 4;
             return (
@@ -78,7 +77,7 @@ function ExpertDemo({ d }) {
             );
           })}
         </ul>
-        <div className="mt-6 flex items-center justify-between">
+        <div className="mt-6 flex items-center justify-between baixa:mt-2">
           <span className="text-[14px] text-mute">{all || t >= 8 ? "" : d.reviewing}</span>
           <span className="fade-step rounded-full bg-deep px-4 py-2 text-[14px] font-medium text-white" style={all || t >= 8 ? { opacity: 1, transform: "scale(1)" } : { opacity: 0, transform: "scale(.9)" }}>
             {d.approved}
@@ -96,15 +95,15 @@ export default function Demo({ content }) {
     { data: d.experts, node: <ExpertDemo d={d.experts} /> },
   ];
   return (
-    <section id="para-quem" className="py-20 md:py-32" aria-labelledby="demo-t">
+    <section id="para-quem" className="secao" aria-labelledby="demo-t">
       <div className="container-s">
         <Reveal as="h2" id="demo-t" className="h-section max-w-[26ch]">{d.title}</Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-2 md:mt-16">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:mt-[5svh]">
           {blocks.map(({ data, node }, i) => (
-            <Reveal key={data.title} delay={i * 100} className="rounded-3xl bg-soft p-6 md:p-10">
-              <h3 className="font-display text-[30px] font-medium leading-tight text-ink md:text-[36px]">{data.title}</h3>
+            <Reveal key={data.title} delay={i * 100} className="rounded-3xl bg-soft p-6 md:p-10 baixa:p-6">
+              <h3 className="font-display text-[30px] font-medium leading-tight text-ink md:text-[36px] baixa:text-[28px]">{data.title}</h3>
               <p className="mt-3 max-w-[30rem] text-ink">{data.text}</p>
-              <div className="mt-8">
+              <div className="mt-8 baixa:mt-4">
                 {data.video ? <Video src={data.video} background className="aspect-[4/3] w-full rounded-2xl" /> : node}
               </div>
             </Reveal>

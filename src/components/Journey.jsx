@@ -20,10 +20,10 @@ export default function Journey({ content }) {
   };
   const s = j.steps[i];
   return (
-    <section id={j.id} className="py-20 md:py-32">
+    <section id={j.id} className="secao">
       <div className="container-s">
         <Reveal as="h2" className="h-section max-w-[16ch]">{j.title}</Reveal>
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 md:mt-16">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:mt-[5svh]">
           <div>
             <div role="tablist" aria-orientation="vertical" aria-label={j.title} onKeyDown={onKey} className="flex flex-col">
               {j.steps.map((st, k) => {
@@ -53,7 +53,7 @@ export default function Journey({ content }) {
               <span className="ml-2 text-[15px] text-mute" aria-live="polite">{i + 1} de {n}</span>
             </div>
           </div>
-          <div id="journey-panel" role="tabpanel" aria-labelledby={`tab-${i}`} className="overflow-hidden rounded-3xl bg-soft">
+          <div id="journey-panel" role="tabpanel" aria-labelledby={`tab-${i}`} className="overflow-hidden rounded-3xl bg-soft lg:w-full lg:max-w-[max(420px,calc((100svh_-_310px)*4/3))] lg:self-start lg:justify-self-end">
             {s.image ? (
               <Img key={i} src={s.image} alt={s.alt} className="aspect-[4/3] w-full animate-[fadeIn_.5s_ease]" />
             ) : (
